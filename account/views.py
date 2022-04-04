@@ -6,7 +6,7 @@ from django.views.generic.edit import CreateView
 
 # Create your views here.
 
-# def landing(request):
+def landing(request):
   image=Profile.objects.all()
   context={'image':image}
   return render(request, 'account/landing.html', context)
@@ -18,7 +18,7 @@ def home_view(request):
   return render(request, 'account/dashboard.html', context)
 
 
-def register(request):
+# def register(request):
   context={}
   if request.POST:
     form=UserRegistrationForm(request.POST)
