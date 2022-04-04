@@ -1,0 +1,54 @@
+body{
+  background-color: lightgray;
+}
+
+.ups{
+  width: 40%;
+  height: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: .3rem solid black;
+  border-radius: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3%;
+}
+img{
+  border-radius: 2%;
+}
+.up{
+  width: 40%;
+  height: 10%;
+  border: .3rem solid black;
+  border-radius: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3%;
+}
+.up p, .up h2{
+  margin-left: 2%;
+}
+.hidden{
+  display: none;
+}
+.hidden:target{
+  display: block;
+  border: .3rem solid black;
+  border-radius: 2%;
+  padding: 1%;
+  margin-bottom: 3%;
+  size: 40% 10%;
+}
+button.btn-sm{
+  border-radius: 2%;
+}
+input.copy{
+  display: none;
+}
+
+.login{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

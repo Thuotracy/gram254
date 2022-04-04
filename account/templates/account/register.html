@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+
+  {% load static %}
+  {% block styles %}
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% endblock %}
+
+  {% block scripts %}
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% endblock %}
+
+</head>
+<body class="login">
+  <h1>Register for an account</h1>
+  <div>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <!-- {{ register_form }}     -->
+      {{ register_form.name.label }}
+      {{ register_form.name }} <br><br>
+      {{ register_form.email.label }}
+      {{ register_form.email }} <br><br>
+      {{ register_form.password1.label }}
+      {{ register_form.password1 }} <br><br>
+      {{ register_form.password2.label }}
+      {{ register_form.password2 }} <br><br>
+
+
+      {% for error in register_form.errors %}
+        <p style="color: red"> {{ error }} </p>
+      {% endfor %}
+
+      <button type="submit">create acc</button>
+    </form>
+  </div>
+</body>
+</html>

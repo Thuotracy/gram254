@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+
+  {% load static %}
+  {% block styles %}
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% endblock %}
+
+  {% block scripts %}
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  {% endblock %}
+
+</head>
+<body class="login">
+  <div>
+    <h1>Login to your account</h1>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <!-- {{ register_form }}     -->
+      
+      <p>{{ login_form.email.label }}
+         {{ login_form.email }}</p> 
+      <p>{{ login_form.password.label }}
+         {{ login_form.password }}</p>
+
+
+      <!-- {% for error in login_form.errors %}
+        <p style="color: red"> {{ error }} </p>
+      {% endfor %} -->
+
+        {% if login_form.non_field_errors %}
+          {% for err in login_form.non_field_errors %}
+            <p style="color: red"> {{ err }} </p>
+          {% endfor %}
+        {% endif %}
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</body>
+</html>
