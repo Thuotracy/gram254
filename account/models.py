@@ -6,6 +6,8 @@ from cloudinary.models import CloudinaryField
 
 
 # Create your models here.
+
+# customised model for authentication
 class Manager(BaseUserManager):
   def create_user(self,name, email, password=None):
     if not name:
