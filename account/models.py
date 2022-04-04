@@ -71,7 +71,7 @@ class NUser(AbstractBaseUser):
 
 # class Profile(models.Model):
   name=models.CharField(max_length=50, null=True)
-  # profile_picture=models.ImageField()
+  profile_picture=models.ImageField()
   profile_picture=CloudinaryField('image')
   bio=models.TextField()
   created=models.DateTimeField(auto_now_add=True)
