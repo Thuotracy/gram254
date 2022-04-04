@@ -95,7 +95,7 @@ To run the application on your development machine,
 * Django-Admin
 
 ## Bugs
-like functionality is not working as expected
+like functionality is not working as expected.
 
 ## License
 [![License](https://img.shields.io/packagist/l/loopline-systems/closeio-api-wrapper.svg)](http://opensource.org/licenses/MIT)
