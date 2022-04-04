@@ -1,4 +1,4 @@
-serve:
+# serve:
 	python manage.py runserver
 
 runchecks:
