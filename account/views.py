@@ -18,7 +18,7 @@ def home_view(request):
   return render(request, 'account/dashboard.html', context)
 
 
-# def register(request):
+def register(request):
   context={}
   if request.POST:
     form=UserRegistrationForm(request.POST)
@@ -64,7 +64,7 @@ def logout_view(request):
 
 
 
-def search_results(request):
+# def search_results(request):
   if 'image' in request.GET and request.GET["image"]:
     search_term = request.GET.get("image")
     searched_images = Image.objects.filter(image_name__icontains = search_term) 
