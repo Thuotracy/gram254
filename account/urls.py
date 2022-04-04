@@ -1,4 +1,4 @@
-from django.urls import path
+# from django.urls import path
 from account.views import landing, search_results, home_view,register, login_view, logout_view, Post
 
 
