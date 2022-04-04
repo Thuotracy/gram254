@@ -64,7 +64,7 @@ def logout_view(request):
 
 
 
-# def search_results(request):
+def search_results(request):
   if 'image' in request.GET and request.GET["image"]:
     search_term = request.GET.get("image")
     searched_images = Image.objects.filter(image_name__icontains = search_term) 
