@@ -69,7 +69,7 @@ class NUser(AbstractBaseUser):
 
 # Image and Profile models
 
-class Profile(models.Model):
+# class Profile(models.Model):
   name=models.CharField(max_length=50, null=True)
   # profile_picture=models.ImageField()
   profile_picture=CloudinaryField('image')
