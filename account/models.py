@@ -1,5 +1,3 @@
-# import email
-# from unicodedata import name
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, User
 from cloudinary.models import CloudinaryField
@@ -40,7 +38,6 @@ class Manager(BaseUserManager):
 
 
 class NUser(AbstractBaseUser):
-  # id=models.IntegerField(primary_key=True)
   name=models.CharField(verbose_name="Name", max_length=50)
   email=models.EmailField(verbose_name="email address", max_length=50,unique=True)
   date_joined=models.DateTimeField(verbose_name="date joined", auto_now_add=True)
@@ -69,7 +66,7 @@ class NUser(AbstractBaseUser):
 
 # Image and Profile models
 
-# class Profile(models.Model):
+class Profile(models.Model):
   name=models.CharField(max_length=50, null=True)
   profile_picture=models.ImageField()
   profile_picture=CloudinaryField('image')
@@ -92,7 +89,6 @@ class NUser(AbstractBaseUser):
 
   
 class Image(models.Model):
-  # image=models.ImageField()
   image_name=models.CharField(max_length=50, blank=True)
   image=CloudinaryField('image')
   image_caption=models.CharField('Caption(optional)', max_length=300, blank=True)
@@ -104,11 +100,6 @@ class Image(models.Model):
 
   def __str__(self) -> str:
       return self.image_name
-
-  # def __str__(self):
-  #   if not self.image_name:
-  #     return ""
-  #   return str(self.image_name)
 
   def save_image(self):
     self.save()

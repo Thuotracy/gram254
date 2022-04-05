@@ -2,11 +2,11 @@
 
 ## Author
 ### [Tracy Wangari]
+
 ## Description
 This is an instagram clone
 
 ## Setup Instructions:
-### Requirements
 
 ##### 1. Clone the repository
 Clone the the repository by running
