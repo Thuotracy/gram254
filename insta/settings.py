@@ -10,15 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-# from ctypes import cast
+
 from pathlib import Path
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 import os
 
-# import django_heroku
-# import dj_database_url
+import django_heroku
+import dj_database_url
 from decouple import config,Csv
 
 
@@ -186,4 +186,4 @@ CLOUDINARY_STORAGE = {
 }
 
 # Configure Django App for Heroku.
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
