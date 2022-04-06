@@ -61,8 +61,21 @@
       <img src="{{ pic.image.url }}" height="30%" width="100%" alt="mascot">
       <p> {{ pic.image_caption }} </p>
       <p>{{ pic.likes }} likes</p>
-      <p>Uploaded {{ pic.created }}</p>
+      <h3><strong>comment: </strong>{{image.comments.comments}}</h3>
+    <div>
+      {% if pic.comments.all%}
+      {% for comment in pic.comments.all %}
+      <p>{{comment.comments}} <strong>author:</strong> {{ comment.author }}    <strong> Date </strong>{{ comment.date_added }}</p>
+      <p></p>
+      {% endfor %}
+      {% else %}
+      <p>No comments yet</p>
+      {%endif%}
     </div>
+
+     <p>Uploaded {{ pic.created }}</p>
+    </div>
+    <a href="{% url 'add_comment' %} "><button>Comment</button></a>
     {%endfor%}
 </body>
 </html>

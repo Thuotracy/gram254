@@ -1,8 +1,9 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
-from account.forms import UserRegistrationForm, UserLoginForm
+from account.forms import UserRegistrationForm, UserLoginForm,CommentForm
 from .models import Profile,Image
 from django.views.generic.edit import CreateView
+
 
 # Create your views here.
 
@@ -81,3 +82,16 @@ class Post(CreateView):
   model=Image
   fields=['image_name','image','image_caption','likes','comments']
   success_url='account/dashboard.html'
+
+def add_comment(request):
+    if request.method == 'POST':
+        form = CommentForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_comment=form.save(commit=False)
+            # new_post.profile=current_user
+            new_comment.save()
+            print('comment saved')
+            return redirect(home_view)
+    else:
+        form = CommentForm()
+        return render(request, 'comment.html',{'form':form}) 

@@ -94,7 +94,6 @@ class Image(models.Model):
   image_caption=models.CharField('Caption(optional)', max_length=300, blank=True)
   profile=models.ForeignKey(NUser, on_delete=models.CASCADE, blank=True, null=True)
   likes=models.IntegerField(default=0)
-  comments=models.TextField()
   created=models.DateTimeField(auto_now_add=True)
   modified=models.DateTimeField(auto_now=True)
 
@@ -110,3 +109,11 @@ class Image(models.Model):
   @classmethod
   def update_image(cls,id,image_name,image,image_caption,profile,likes,comments,created,modified):
     cls.objects.filter(id=id).update(image_name=image_name,image=image,image_caption=image_caption,profile=profile,likes=likes,comments=comments,created=created,modified=modified)
+
+class Comment(models.Model):
+    image= models.ForeignKey(Image, related_name='comments', on_delete=models.CASCADE)
+    comments =models.CharField(max_length=100, blank=True, default='great')
+    author = models.CharField(max_length=50)
+    date_added = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return '%s - %s' % (self.image.image_name, self.author)    
