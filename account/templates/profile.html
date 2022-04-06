@@ -9,7 +9,7 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>welcome to your profile page</h1>
+  <h1>Welcome to Gram254</h1>
 <a class="nav-link" href="/update_profile">update profile</a>
 {% for profile in profile %}
 <div class="modal-body">
@@ -21,11 +21,10 @@
  <div >
   <h3><strong>Name: </strong> {{profile.username}}</h3>
   <h3> <strong> email:</strong> {{profile.useremail}}</h3>
-  <h3><strong>age: </strong>{{profile.userage}}</h3>
-  <h3><strong>password: </strong>{{profile.user_password}}</h3>
+
 {% empty %}
   <div class="row">
-    <h2 class="text-center">No profile info set</h2>
+    <h2 class="text-center">No profile</h2>
   </div>
   {% endfor %}
   {%endblock%}
