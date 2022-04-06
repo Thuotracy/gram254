@@ -119,4 +119,9 @@ def profile_update(request):
             return redirect(profile_display)
     else:
         form = ProfileForm()
-    return render(request, 'profiledisplay.html',{'form':form})        
+    return render(request, 'profiledisplay.html',{'form':form}) 
+
+def profile_display(request):
+    current_user = request.user
+    profile= Profile.objects.filter(username=current_user)
+    return render(request, 'profile.html',{'profile':profile})           
