@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
-from account.forms import UserRegistrationForm, UserLoginForm,CommentForm
+from account.forms import UserRegistrationForm, UserLoginForm,CommentForm,ProfileForm
 from .models import Profile,Image
 from django.views.generic.edit import CreateView
 
@@ -95,3 +95,28 @@ def add_comment(request):
     else:
         form = CommentForm()
         return render(request, 'comment.html',{'form':form}) 
+
+def profile_update(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile= Profile.objects.filter(username=current_user)
+            print(profile)
+            if profile:
+                print('profile exist')
+                username = current_user
+                useremail=form.cleaned_data['useremail']
+                profile_image=form.cleaned_data['profile_image']
+                Profile.objects.filter(username=current_user).update(useremail=useremail,profile_image=profile_image)
+            else:
+                print('profile does not exist')
+                profile=form.save(commit=False)
+                profile.username= current_user
+                profile.save()
+            message='saved successfuly'
+            # profile_display(request)
+            return redirect(profile_display)
+    else:
+        form = ProfileForm()
+    return render(request, 'profiledisplay.html',{'form':form})        
