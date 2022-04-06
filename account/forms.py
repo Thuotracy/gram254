@@ -27,6 +27,12 @@ class UserLoginForm(forms.ModelForm):
         raise forms.ValidationError('invalid cridentials')
 
 
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude=['username']
+        fields ='__all__'
+
 
 class CommentForm(forms.ModelForm):
     class Meta:

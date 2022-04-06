@@ -110,10 +110,43 @@ class Image(models.Model):
   def update_image(cls,id,image_name,image,image_caption,profile,likes,comments,created,modified):
     cls.objects.filter(id=id).update(image_name=image_name,image=image,image_caption=image_caption,profile=profile,likes=likes,comments=comments,created=created,modified=modified)
 
+
+
+class Profile(models.Model):
+    username = models.CharField(max_length=20)
+    useremail = models.EmailField(max_length=30)
+    bio = models.CharField(max_length=100)
+    profile_image = models.ImageField(upload_to = 'images/')
+  
+    def __str__(self):
+        return self.username
+    def save_profile(self):
+        self.save()
+    def delete_profile(self,username):
+        to_delete= Profile.objects.filter(username=username).delete()
+    def update_profile(self,old_user,new_user):
+        Profile.objects.filter(username=old_user).update(name=new_user)
+        self.save()
+class Image(models.Model):
+    image = models.ImageField(upload_to = 'images/')
+    image_name = models.CharField(max_length =60)
+    image_caption= models.CharField(max_length=100)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    likes_count = models.IntegerField(default=0)
+   
+    def __str__(self):
+        return self.image_name
+    def save_image(self):
+        self.save()
+    def delete_image(self,image_reff):
+        to_delete= Image.objects.filter(name=image_reff).delete()
+    def total_likes(self):
+        return self.likes.count()         
+
 class Comment(models.Model):
     image= models.ForeignKey(Image, related_name='comments', on_delete=models.CASCADE)
     comments =models.CharField(max_length=100, blank=True, default='great')
     author = models.CharField(max_length=50)
     date_added = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return '%s - %s' % (self.image.image_name, self.author)    
+        return '%s - %s' % (self.image.image_name, self.author)   
