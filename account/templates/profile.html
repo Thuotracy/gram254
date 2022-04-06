@@ -1,0 +1,33 @@
+{% load bootstrap3 %}
+{% block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>welcome to your profile page</h1>
+<a class="nav-link" href="/update_profile">update profile</a>
+{% for profile in profile %}
+<div class="modal-body">
+  <div class="row">
+    <div class="">
+      <img src="{{profile.profile_image.url}}" class="img-responsive" style="width: 50%;height: auto;" alt="{{profile.username}} image">
+    </div>
+  </div>
+ <div >
+  <h3><strong>Name: </strong> {{profile.username}}</h3>
+  <h3> <strong> email:</strong> {{profile.useremail}}</h3>
+  <h3><strong>age: </strong>{{profile.userage}}</h3>
+  <h3><strong>password: </strong>{{profile.user_password}}</h3>
+{% empty %}
+  <div class="row">
+    <h2 class="text-center">No profile info set</h2>
+  </div>
+  {% endfor %}
+  {%endblock%}
+</body>
+</html>
